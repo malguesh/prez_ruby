@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @article.body %>
+</p>
+
+<% @comments.each do |comment| %>
+	<div><%= comment.body %></div>
+	<div><i>Posted <%= time_ago_in_words(comment.created_at) %> ago</i></div><br/>
+<% end %>
+<%= form_for @comment, url: comments_path do |f| %>
+  <%= f.text_area :body, size: "60x12" %>
+  <%= f.hidden_field :article_id, value: @article.id %>
+  <%= f.submit "Comment !" %>
+<% end %>
+<br/>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
