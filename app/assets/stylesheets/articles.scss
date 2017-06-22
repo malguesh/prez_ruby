@@ -1,0 +1,44 @@
+// Place all the styles related to the Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  text-align: center;
+}
+
+.article {
+  border: 1px solid lightgrey;
+
+  h1 {
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
+table {
+  width: 50%;
+  margin: auto;
+  border: 1px solid lightgrey;
+
+  td.comment {
+    border-top: 1px solid;
+  }
+
+  textarea {
+    height: 10px;
+  }
+
+  tbody {
+    i {
+      color: grey;
+    }
+
+    p {
+      font-size: 14px;
+      margin: 10px 3px 0 3px;
+    }
+  }
+}
