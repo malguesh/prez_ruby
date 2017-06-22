@@ -1,27 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<div class="article">
+  <h1><%= @article.title %></h1>
+  <p><%= @article.body %></p>
+</div>
 
-<p>
-  <strong>Body:</strong>
-  <%= @article.body %>
-</p>
+<table>
+  <thead>
+  <tr>
+    <th>Commentaires</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
 
-<% @comments.each do |comment| %>
-	<div><%= comment.body %></div>
-	<div><i>
-		Posted <%= time_ago_in_words(comment.created_at) %> ago
-	</i></div><br/>
-<% end %>
-
-<%= form_for @comment, url: comments_path do |f| %>
-  <%= f.text_area :body, size: "60x12" %>
-  <%= f.hidden_field :article_id, value: @article.id %>
-  <%= f.submit "Comment !" %>
-<% end %>
+  <tbody>
+  <% @comments.each do |comment| %>
+      <tr>
+        <td class="comment">
+          <p><%= comment.body %></p>
+          <i>Posted <%= time_ago_in_words(comment.created_at) %> ago</i>
+        </td>
+      </tr>
+  <% end %>
+  <tr>
+    <td>
+    <%= form_for @comment, url: comments_path do |f| %>
+        <%= f.text_area :body, size: "60x12" %>
+        <%= f.hidden_field :article_id, value: @article.id %>
+        <%= f.submit "Comment !" %>
+    <% end %>
+    </td>
+  </tr>
+  </tbody>
+</table>
 
 <br/>
 
